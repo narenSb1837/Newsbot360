@@ -1,7 +1,7 @@
 
 import os
 os.environ["COHERE_API_KEY"]='P7b3enduxOgEYHdhY4X0xBu7j7Q125sAZ3MMdSWy'
-os.environ['PINECONE_API_KEY']='b31ccf3f-4c73-4851-abe6-e0653439dab5'#c85ea1ee-1d0f-4c78-9285-1dd05c5194aa'
+os.environ['PINECONE_API_KEY']='809adeaf-d6ce-423a-940e-041ce9b8614b'#c85ea1ee-1d0f-4c78-9285-1dd05c5194aa'
 os.environ['PINECONE_ENV']='gcp-starter'
 import cohere
 import langchain
