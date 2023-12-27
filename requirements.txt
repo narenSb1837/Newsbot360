@@ -67,7 +67,6 @@ Pygments==2.17.2
 pymongo==4.6.1
 pypdf==3.17.4
 python-dateutil==2.8.2
-python-dotenv @ file://python-dotenv-1.0.0.tar.gz#sha256=a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba
 pytz==2023.3.post1
 PyYAML==6.0.1
 referencing==0.32.0
