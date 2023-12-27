@@ -18,14 +18,12 @@ from langchain.prompts.chat import (
 )
 from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
-from IPython.display import display, Markdown, Latex
 from langchain.embeddings.cohere import CohereEmbeddings
 from langchain.llms import Cohere
 from langchain.prompts import PromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chains import RetrievalQA
-from langchain.vectorstores import Qdrant
 from langchain.document_loaders import TextLoader
 import textwrap as tr
 import random
