@@ -29,15 +29,11 @@ from langchain.vectorstores import Qdrant
 from langchain.document_loaders import TextLoader
 import textwrap as tr
 import random
-import os
 from langchain.chains import LLMChain, HypotheticalDocumentEmbedder
 from langchain.vectorstores import pinecone,Pinecone
 import pinecone
 from langchain.embeddings import HuggingFaceEmbeddings, SentenceTransformerEmbeddings
 from langchain.cache import SQLiteCache
-import os 
-from dotenv import load_dotenv
-load_dotenv()
 print('VECTEMBED FILE')
 def create_hypothetical_chain():
     
