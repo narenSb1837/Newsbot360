@@ -20,8 +20,6 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 
 import os
-from dotenv import load_dotenv
-load_dotenv()
 from dbase import *
 from vect_embed import *
 vectDB=vector_embedding()
