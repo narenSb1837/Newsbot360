@@ -8,6 +8,12 @@ Newsbot360 is a sophisticated chatbot designed to provide users with real-time e
 
 The chatbot is powered by various technologies, including Beautiful Soup for web scraping, the Langchain framework for RAG (Retrieval-Augmented Generation) pipeline implementation, Cohere embeddings for Pinecone vector database, and LLM Cohere for data processing. The incorporation of hypothetical vector embeddings ensures optimized performance.
 
+## Website Output
+
+
+![Screenshot (789)](https://github.com/narenSb1837/Newsbot360/assets/89464601/1e5cf683-b035-4c4b-9fde-3616e25b4a22)
+![Screenshot (790)](https://github.com/narenSb1837/Newsbot360/assets/89464601/c94cb982-58eb-4b99-8816-8dbcbfa41f8e)
+
 ## Features
 
 - **Web Scraping:** Utilizes Beautiful Soup for efficient web scraping of economic news from sites like MoneyControl and Economic Times.
