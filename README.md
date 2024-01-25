@@ -1,6 +1,6 @@
 # Newsbot360
 
-![Newsbot360 Logo](https://github.com/narenSb1837/Newsbot360/assets/89464601/c06f78d6-454b-4e0a-a4ce-00a94726b2fb) *(if you have a logo)*
+![Newsbot360 Logo](https://github.com/narenSb1837/Newsbot360/assets/89464601/c06f78d6-454b-4e0a-a4ce-00a94726b2fb)
 
 ## Overview
 
