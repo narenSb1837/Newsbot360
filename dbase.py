@@ -1,10 +1,14 @@
 import pymongo
 from pymongo import MongoClient
 import os
-os.environ["COHERE_API_KEY"]='P7b3enduxOgEYHdhY4X0xBu7j7Q125sAZ3MMdSWy'
-os.environ['PINECONE_API_KEY']='b31ccf3f-4c73-4851-abe6-e0653439dab5'#c85ea1ee-1d0f-4c78-9285-1dd05c5194aa'
+os.environ["COHERE_API_KEY"]='1WDphHnJYzXRcm2EjDcvyqXRnKRG6n83XxX7LPFx'
+os.environ['PINECONE_API_KEY']='f840e6fa-f34e-412d-8da1-b20eff50d688'#'6dbebefb-e722-4241-8041-00f56ca935ca'
 os.environ['PINECONE_ENV']='gcp-starter'
-client = MongoClient("mongodb+srv://trial:trial@trial.upeuysc.mongodb.net/?retryWrites=true&w=majority")
+os.environ['QDRANT_API_KEY']='B2p7WN_t2TIpugdRgeZ-S5ApOPZ-VigWZZxhxDE036aBbATU_mpx1g'
+os.environ['GOOGLE_API_KEY']='AIzaSyAUggwhrE0LoTBDWrfeU6kxQuxA0FP6eCk'
+os.environ['APIFY_API_TOKEN']='apify_api_K90vlEcLcKMx43KED0DpKQuxz2cTUr2CXPtv'
+os.environ['HUGGINGFACEHUB_API_TOKEN'] ='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'
+client = MongoClient("mongodb+srv://trial1:trial1@trial.zytnial.mongodb.net/?retryWrites=true&w=majority")
 db=client['chatHistory']
 cht_info=db.cht_info
 from datetime import datetime

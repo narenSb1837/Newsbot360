@@ -1,5 +1,10 @@
 import streamlit as st
 from chtbot import chtreply
+st.set_page_config(
+    page_title="NewsBot360",
+    page_icon=":newspaper:",
+    layout="wide"
+)
 st.title("NewsBot360")
 
 # Initialize chat history
@@ -21,6 +26,8 @@ if prompt := st.chat_input("Message NewsBot360..."):
     response = chtreply(prompt)
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
+        message_placeholder = st.empty()
         st.markdown(response)
+        
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})

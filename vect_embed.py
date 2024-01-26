@@ -1,11 +1,16 @@
 
 import os
-os.environ["COHERE_API_KEY"]='P7b3enduxOgEYHdhY4X0xBu7j7Q125sAZ3MMdSWy'
-os.environ['PINECONE_API_KEY']='ffc34cb8-5e0e-446e-9a92-ac18c157b720'#'8644c0cf-1aef-4bbc-a39d-721e0cee986c'#c85ea1ee-1d0f-4c78-9285-1dd05c5194aa'
+os.environ["COHERE_API_KEY"]='1WDphHnJYzXRcm2EjDcvyqXRnKRG6n83XxX7LPFx'
+os.environ['PINECONE_API_KEY']='f840e6fa-f34e-412d-8da1-b20eff50d688'#'6dbebefb-e722-4241-8041-00f56ca935ca'
 os.environ['PINECONE_ENV']='gcp-starter'
+os.environ['QDRANT_API_KEY']='B2p7WN_t2TIpugdRgeZ-S5ApOPZ-VigWZZxhxDE036aBbATU_mpx1g'
+os.environ['GOOGLE_API_KEY']='AIzaSyAUggwhrE0LoTBDWrfeU6kxQuxA0FP6eCk'
+os.environ['APIFY_API_TOKEN']='apify_api_K90vlEcLcKMx43KED0DpKQuxz2cTUr2CXPtv'
+os.environ['HUGGINGFACEHUB_API_TOKEN'] ='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'
+os.environ['VOYAGE_API_KEY']='pa-yEmOi9CYAehyiFGbGJKRUwVxUfkdlNdXoqIulWYzNKs'
+
 import cohere
 import langchain
-from langchain.chat_models import cohere
 from langchain.document_loaders import PyPDFLoader
 from langchain.llms import Cohere
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -17,8 +22,6 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 from langchain.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings.cohere import CohereEmbeddings
 from langchain.llms import Cohere
 from langchain.prompts import PromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -30,8 +33,12 @@ import random
 from langchain.chains import LLMChain, HypotheticalDocumentEmbedder
 from langchain.vectorstores import pinecone,Pinecone
 import pinecone
-from langchain.embeddings import HuggingFaceEmbeddings, SentenceTransformerEmbeddings
+from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.cache import SQLiteCache
+import voyageai
+from langchain_community.embeddings import VoyageEmbeddings
+
+
 print('VECTEMBED FILE')
 def create_hypothetical_chain():
     
@@ -50,15 +57,20 @@ def create_cache():
 
 def vector_embedding():
     
-    model_name = "WhereIsAI/UAE-Large-V1"
+    #model_name = "WhereIsAI/UAE-Large-V1"
     llm_chain=create_hypothetical_chain()
-    hf = HuggingFaceEmbeddings(model_name=model_name)
-    embeddings = HypotheticalDocumentEmbedder(
+    #hf = HuggingFaceEmbeddings(model_name=model_name)
+
+    base_embeddings = VoyageEmbeddings(voyage_api_key='pa-yEmOi9CYAehyiFGbGJKRUwVxUfkdlNdXoqIulWYzNKs')
+    #base_embeddings = CohereEmbeddings(model="multilingual-22-12")
+    '''embeddings = HypotheticalDocumentEmbedder(
     llm_chain=llm_chain,
-    base_embeddings=hf)
+    base_embeddings=base_embeddings)'''
     pinecone.init(api_key=os.getenv("PINECONE_API_KEY"),environment=os.getenv("PINECONE_ENV"))
     index_name = "trial"
-    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    #docsearch = Pinecone.from_existing_index(index_name, base_embeddings)
+    # This is a long document we can split up.
+    docsearch = Pinecone.from_existing_index(index_name, base_embeddings)
     #pine_cone = Pinecone.from_documents(docs,embeddings, index_name=index_name)
     create_cache()
     return docsearch
