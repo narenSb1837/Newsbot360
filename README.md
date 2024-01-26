@@ -10,7 +10,7 @@ The chatbot is powered by various technologies, including Beautiful Soup for web
 
 ## Website Output
 
-
+![Screenshot (795)](https://github.com/narenSb1837/Newsbot360/assets/89464601/00d03b50-c7f4-49de-8471-92490d6401a8)
 ![Screenshot (789)](https://github.com/narenSb1837/Newsbot360/assets/89464601/1e5cf683-b035-4c4b-9fde-3616e25b4a22)
 ![Screenshot (790)](https://github.com/narenSb1837/Newsbot360/assets/89464601/c94cb982-58eb-4b99-8816-8dbcbfa41f8e)
 
