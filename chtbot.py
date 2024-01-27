@@ -28,13 +28,16 @@ from vect_embed import *
 vectDB=vector_embedding()
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import CohereRerank
-
+os.environ['HUGGINGFACEHUB_API_TOKEN'] ='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'
+from langchain.llms import HuggingFaceHub
+from langchain.chains import ConversationalRetrievalChain
+from langchain.retrievers.multi_query import MultiQueryRetriever
 def chtreply(query):
 
-    from langchain.chains import ConversationalRetrievalChain
-    llm=Cohere()
-    from langchain.retrievers.multi_query import MultiQueryRetriever
-
+    repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1'
+    llm = HuggingFaceHub(
+        repo_id=repo_id, model_kwargs={"temperature": 0.5, "max_length": 5000}
+    )
     retriever = MultiQueryRetriever.from_llm(
         retriever=vectDB.as_retriever(), llm=llm#must set qdrant embeddings as base embedding and not hypothetical embeddings else it will ask fr paid version
     )
