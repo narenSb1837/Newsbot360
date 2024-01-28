@@ -56,13 +56,26 @@ def create_hypothetical_chain():
 def create_cache():
     langchain.llm_cache = SQLiteCache(database_path=".langchain.db")
 
-def vector_embedding():
-    
+        
+def vector_embedding(file_name=None):
+    if file_name:
+        print('2..')
+        with open(file_name, encoding='utf-8') as f:
+            state_of_the_union = f.read()
+            text_splitter = RecursiveCharacterTextSplitter(
+            # Set a really small chunk size, just to show.
+            separators=['\n \n'],
+            chunk_size=1500,
+            chunk_overlap=200,
+            length_function=len,
+            is_separator_regex=False,
+            )
+            docs = text_splitter.create_documents([state_of_the_union])
     #model_name = "WhereIsAI/UAE-Large-V1"
     llm_chain=create_hypothetical_chain()
     #hf = HuggingFaceEmbeddings(model_name=model_name)
 
-    base_embeddings = VoyageEmbeddings(voyage_api_key='pa-yEmOi9CYAehyiFGbGJKRUwVxUfkdlNdXoqIulWYzNKs')
+    embeddings = VoyageEmbeddings(voyage_api_key='pa-yEmOi9CYAehyiFGbGJKRUwVxUfkdlNdXoqIulWYzNKs')
     #base_embeddings = CohereEmbeddings(model="multilingual-22-12")
     '''embeddings = HypotheticalDocumentEmbedder(
     llm_chain=llm_chain,
@@ -71,8 +84,14 @@ def vector_embedding():
     index_name = "trial"
     #docsearch = Pinecone.from_existing_index(index_name, base_embeddings)
     # This is a long document we can split up.
-    docsearch = Pinecone.from_existing_index(index_name, base_embeddings)
-    #pine_cone = Pinecone.from_documents(docs,embeddings, index_name=index_name)
+    if file_name:
+        print('embeddings started')
+
+        docsearch = Pinecone.from_documents(docs,embeddings, index_name=index_name)
+        print('embeddings end')
+    else:
+          
+        docsearch = Pinecone.from_existing_index(index_name, embeddings)
     create_cache()
     return docsearch
 

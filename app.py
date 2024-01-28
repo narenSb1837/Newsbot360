@@ -1,5 +1,8 @@
 import streamlit as st
 from chtbot import chtreply
+from datetime import date
+from webscrape import *
+import os
 st.set_page_config(
     page_title="NewsBot360",
     page_icon=":newspaper:",
@@ -7,7 +10,19 @@ st.set_page_config(
 )
 st.title("NewsBot360")
 
-# Initialize chat history
+today = str(date.today())+'.txt'
+print(today)
+files = os.listdir('files')
+if today not in files:
+    with st.spinner("Scraping data..."):
+            scrape('files/'+today)    
+
+            st.success()
+
+    
+    
+    
+    
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
